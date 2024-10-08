@@ -63,14 +63,16 @@ const Register = () => {
                 </div>
               </div>
 
-              <div className='max-w-[516px] w-full h-[536px] ml-[60px] rounded-[12px]  bg-[url(/public/Cosmonaut.webp)] bg-cover bg-center justify-center'>
-                <div className='flex flex-col '>
-                  <p className='max-w-[466px] w-full '>
+              <div className='max-w-[516px] w-full p-[28px] h-[536px] ml-[60px] rounded-[12px]  bg-[url(/public/Cosmonaut.webp)] box-border bg-cover bg-center flex  items-end justify-center'>
+                <div className='w-full flex flex-col  '>
+                  <p className='max-w-[466px] w-full font-[Inter] font-normal text-[16px] leading-[19px] tracking-[-1%] text-white opacity-[70%]'>
                     “Two lunar months revealed Earth's fragile beauty against
                     vast silence, transforming my view of our place in the
                     universe.
                   </p>
-                  <span>Irinel Traista</span>
+                  <span className='mt-[6px] font-[Inter] font-medium text-[16px] leading-[19px] tracking-[-1%] text-white opacity-[80%]'>
+                    Irinel Traista
+                  </span>
                 </div>
               </div>
             </div>
