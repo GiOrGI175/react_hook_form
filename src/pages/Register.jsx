@@ -1,9 +1,17 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import RegisterHeaedr from '../components/Header/RegisterHeaedr';
-
 import rocket_icon from '/rocketIcon.svg';
 
 const Register = () => {
+  const { register, handleSubmit, formState, watch } = useForm({
+    mode: 'onBlur',
+  });
+
+  const { errors } = formState;
+
+  console.log(errors);
+
   return (
     <div className='w-full bg-[#0A0D17]'>
       <RegisterHeaedr />
@@ -22,18 +30,35 @@ const Register = () => {
                   </p>
                 </div>
                 <div className='flex flex-col max-w-[426px] w-full'>
-                  <form action=''>
+                  <form onSubmit={handleSubmit(onsubmit)} noValidate>
                     <div className='mb-[14px] flex'>
                       <input
                         className='w-[206px] h-[42px] mr-[14px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
                         type='text'
+                        id='lastName'
                         placeholder='Last Name'
+                        {...register('lastName', {
+                          required: {
+                            value: true,
+                            mesage: 'this value is empty',
+                          },
+                        })}
                       />
+
                       <input
                         className='w-[206px] h-[42px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
                         type='text'
+                        id='firstName'
                         placeholder='First Name'
+                        {...register('firstName', {
+                          disabled: watch('firstName') === '',
+                          required: {
+                            value: true,
+                            message: 'this value is empty',
+                          },
+                        })}
                       />
+                      {errors.dob && <span>{errors.firstName.message}</span>}
                     </div>
                     <input
                       className='w-[426px] h-[42px] mb-[14px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
