@@ -32,49 +32,111 @@ const Register = () => {
                 <div className='flex flex-col max-w-[426px] w-full'>
                   <form onSubmit={handleSubmit(onsubmit)} noValidate>
                     <div className='mb-[14px] flex'>
+                      <div>
+                        <input
+                          className='w-[206px] h-[42px] mr-[14px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
+                          type='text'
+                          id='lastName'
+                          placeholder='Last Name'
+                          {...register('lastName', {
+                            required: {
+                              value: true,
+                              message: 'this value is empty',
+                            },
+                            maxLength: {
+                              value: 15,
+                              message: 'Must be only 15 letters',
+                            },
+                          })}
+                        />
+                        {errors.lastName && (
+                          <span className='text-red-500'>
+                            {errors.lastName.message}
+                          </span>
+                        )}
+                      </div>
+                      <div>
+                        <input
+                          className='w-[206px] h-[42px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
+                          type='text'
+                          id='firstName'
+                          placeholder='First Name'
+                          {...register('firstName', {
+                            disabled: watch('firstName') === '',
+                            required: {
+                              value: true,
+                              message: 'this value is empty',
+                            },
+                            maxLength: {
+                              value: 15,
+                              message: 'Must be only 15 letters',
+                            },
+                          })}
+                        />
+                        {errors.firstName && (
+                          <span className='text-red-500'>
+                            {errors.firstName.message}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className='mb-[14px]'>
                       <input
-                        className='w-[206px] h-[42px] mr-[14px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
+                        className='w-[426px] h-[42px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
                         type='text'
-                        id='lastName'
-                        placeholder='Last Name'
-                        {...register('lastName', {
-                          required: {
-                            value: true,
-                            mesage: 'this value is empty',
-                          },
-                        })}
-                      />
-
-                      <input
-                        className='w-[206px] h-[42px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
-                        type='text'
-                        id='firstName'
-                        placeholder='First Name'
-                        {...register('firstName', {
-                          disabled: watch('firstName') === '',
+                        id='Email'
+                        placeholder='Email'
+                        {...register('Email', {
                           required: {
                             value: true,
                             message: 'this value is empty',
                           },
                         })}
                       />
-                      {errors.dob && <span>{errors.firstName.message}</span>}
+                      {errors.Email && (
+                        <span className='text-red-500'>
+                          {errors.Email.message}
+                        </span>
+                      )}
                     </div>
-                    <input
-                      className='w-[426px] h-[42px] mb-[14px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
-                      type='text'
-                      placeholder='Email'
-                    />
-                    <input
-                      className='w-[426px] h-[42px] mb-[14px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
-                      type='text'
-                      placeholder='Phone Number'
-                    />
-                    <textarea
-                      className='w-[426px] h-[109px] mb-[14px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
-                      type='text'
-                      placeholder='Message'
-                    ></textarea>
+                    <div className=' mb-[14px]'>
+                      <input
+                        className='w-[426px] h-[42px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
+                        type='number'
+                        id='phoneNumber'
+                        placeholder='Phone Number'
+                        {...register('phoneNumber', {
+                          required: {
+                            value: true,
+                            message: 'this value is empty',
+                          },
+                        })}
+                      />
+                      {errors.phoneNumber && (
+                        <span className='text-red-500'>
+                          {errors.phoneNumber.message}
+                        </span>
+                      )}
+                    </div>
+                    <div className='mb-[14px]'>
+                      <textarea
+                        className='w-[426px] h-[109px] rounded-[5px] border-[1px] border-[#FFFFFF33] bg-[#FFFFFF0D] pl-[14px] py-[12px]'
+                        type='text'
+                        id='UsersMessage'
+                        placeholder='Message'
+                        {...register('UsersMessage', {
+                          maxLength: {
+                            value: 150,
+                            message: 'Must be only 150 letters',
+                          },
+                        })}
+                      ></textarea>
+                      {errors.UsersMessage && (
+                        <span className='text-red-500'>
+                          {errors.UsersMessage.message}
+                        </span>
+                      )}
+                    </div>
                     <button
                       type='submit'
                       className='max-w-[426px] w-full h-[42px] rounded-[5px] bg-btn-gradient flex justify-center items-center font-[Inter]  font-medium text-[15px] leading-[18px] tracking-[-1%] text-white'
